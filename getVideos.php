@@ -5,12 +5,12 @@
 
 	include "core/dbConnect.php";
 
-	// Quote search with time stamp
 	if(isset($_POST['quote'])){
-	    $searchString = mysqli_real_escape_string($db, $_POST['quote']);
+	    	$searchString     = mysqli_real_escape_string($db, $_POST['quote']);
 		$getVideos 	  = "SELECT * FROM transcript WHERE quote LIKE '%".$searchString."%' ";
 		$runVideos 	  = mysqli_query($db, $getVideos);
-
+		
+		// If there are no matches, return 'nothing' as a response to the POST request
 		if(mysqli_num_rows($runVideos) == 0){
 			echo 'nothing';
 		}else{
