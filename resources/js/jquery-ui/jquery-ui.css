@@ -115,6 +115,7 @@
 	margin: 0;
 	display: block;
 	outline: 0;
+	max-width: 543px; /* Prevent overflow for longer quotes */
 }
 .ui-menu .ui-menu {
 	position: absolute;
