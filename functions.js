@@ -1,6 +1,6 @@
 $(document).ready(function(){  
 
-    // Set default autocomplete for quote search
+    // The autocomplete function can be applied to different search categories. As a default, apply it to quote search 
     $(".quote").autocomplete({
         source: "autocomplete.php",
         minLength: 2
