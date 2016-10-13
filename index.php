@@ -8,7 +8,7 @@
                 <div id="form" class="col-lg-6 col-lg-offset-3">
                     <div class="input-group">
                         <div class="input-group-btn">
-                            <!-- Search=by dropdown button -->
+                            <!-- "Search by" dropdown button -->
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search by <span class="caret"></span></button>
                             <ul class="dropdown-menu">
                                 <li id="quoteSearchLi"><a href="#">quote</a></li>
@@ -25,7 +25,7 @@
 
             <!-- Search results -->
             <div class="row">
-                <!-- Change the col spans to change the size of the videos -->
+                <!-- Change the col spans to change the size of the videos (iframes) -->
                 <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
                     <div id="searchResults"></div>
                 </div>
