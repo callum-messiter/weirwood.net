@@ -4,34 +4,26 @@
 	$db = $postVarName = $db = $column = $searchString = $characterList = $getVideos = $runVideos = $row = $video_id = "";
 
 	include "core/dbConnect.php";
-	include "core/functions/functions.php";
 
-	// Search by character
-	if(isset($_POST['character'])){
-		getResults($_POST['character'], $db, 'characters');
-	// Search by quote
-	}elseif(isset($_POST['quote'])){
-		getResults($_POST['quote'], $db, 'transcript');
-	}#elseif(isset($_POST['x'])){
-		#getResults($_POST['x'], $db, 'y');	
-	#}
+	// Quote search with time stamp
+	if(isset($_POST['quote'])){
+	    $searchString = mysqli_real_escape_string($db, $_POST['quote']);
+		$getVideos 	  = "SELECT * FROM transcript WHERE quote LIKE '%".$searchString."%' ";
+		$runVideos 	  = mysqli_query($db, $getVideos);
 
-	// Autocomplete suggestion list for character search
-	if(isset($_GET['term'])){
-		$searchString  = $_GET['term'];
-		$characterList = array();
-		// Database contains character nicknames so nickname searches will return results
-		$getVideos = "SELECT * FROM characters WHERE 
-				   name  LIKE '%".$searchString."%'
-				OR name2 LIKE '%".$searchString."%' 
-				OR name3 LIKE '%".$searchString."%' ";
-		$runVideos = mysqli_query($db, $getVideos);
-
-		while($row = mysqli_fetch_array($runVideos)){
-			$characterList[] = $row['name'];
+		if(mysqli_num_rows($runVideos) == 0){
+			echo 'nothing';
+		}else{
+			while($row = mysqli_fetch_array($runVideos)){
+				$video_id   = $row['video_id'];
+				$start_time = $row['start_time'];
+				$start_time = floor($start_time);
+				// The loadVideo function in showVideos.js will grab the data-id and start-time and display the relevant video
+				echo '<div class="youtube-container">';
+					echo '<div class="youtube-player" data-id="'.$video_id.'" start-time="'.$start_time.'"></div>';
+				echo '</div>';
+			}
 		}
-
-		echo json_encode($characterList);	
 	}
 
 ?>

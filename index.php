@@ -4,7 +4,7 @@
 
         <div class="container-fluid">
             <!-- Search elements -->
-            <div class="row" style="margin-top: 20px; margin-bottom: 70px">
+            <div class="row" style="margin-top: 20px; margin-bottom: 20px">
                 <div id="form" class="col-lg-6 col-lg-offset-3">
                     <div class="input-group">
                         <div class="input-group-btn">
@@ -12,7 +12,7 @@
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search by <span class="caret"></span></button>
                             <ul class="dropdown-menu">
                                 <li id="quoteSearchLi"><a href="#">quote</a></li>
-                                <li id="charSearchLi"><a href="#">character</a></li>
+                                <!-- Add search categories here -->
                             </ul>
                         </div>
                         <!-- Search field -->
@@ -25,7 +25,8 @@
 
             <!-- Search results -->
             <div class="row">
-                <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-12 ">
+                <!-- Change the col spans to change the size of the videos -->
+                <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
                     <div id="searchResults"></div>
                 </div>
             </div>
