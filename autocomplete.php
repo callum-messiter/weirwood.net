@@ -7,6 +7,7 @@
 
 	if(isset($_GET['term'])){
 		$searchString  = $_GET['term'];
+		$searchString  = mysqli_real_escape_string($db, $searchString);
 		$quotesList    = array();
 		$getVideos     = "SELECT * FROM transcript WHERE quote LIKE '%".$searchString."%' ";
 		$runVideos     = mysqli_query($db, $getVideos);
