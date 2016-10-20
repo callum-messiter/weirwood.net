@@ -1,7 +1,7 @@
 <?php
 
 	// Declare all variables 
-	$db = $postVarName = $db = $column = $searchString = $characterList = $getVideos = $runVideos = $row = $video_id = "";
+	$db = $searchString = $characterList = $getVideos = $runVideos = $row = $start_time = $video_id = "";
 
 	include "core/dbConnect.php";
 
@@ -17,7 +17,8 @@
 			while($row = mysqli_fetch_array($runVideos)){
 				$video_id   = $row['video_id'];
 				$start_time = $row['start_time'];
-				$start_time = floor($start_time);
+				$start_time = floor($start_time); // Round down to ensure video begins just before the quote is spoken
+
 				// The loadVideo function in showVideos.js will grab the data-id and start-time and display the relevant video
 				echo '<div class="youtube-container">';
 					echo '<div class="youtube-player" data-id="'.$video_id.'" start-time="'.$start_time.'"></div>';
