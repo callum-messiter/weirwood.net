@@ -1,7 +1,7 @@
 <?php
 	
 	// Declare all variables
-	$db = $searchString = $characterList = $getVideos = "";
+	$db = $searchString = $quoteList = $getVideos = $runVideos = "";
 
 	include "core/dbConnect.php";
 
