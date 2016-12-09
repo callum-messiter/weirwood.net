@@ -5,8 +5,8 @@
 
 	include "init/dbConnect.php";
 
-	if(isset($_GET['term'])){
-		$searchString  = $_GET['term'];
+	if(isset($_GET['quote'])){
+		$searchString  = $_GET['quote'];
 		$searchString  = mysqli_real_escape_string($db, $searchString);
 		$quotesList    = array();
 		$getVideos     = "SELECT * FROM transcript WHERE quote LIKE '%".$searchString."%' ";
@@ -18,6 +18,10 @@
 		}
 		// Return the array of quotes as a JSON object
 		echo json_encode($quoteList);	
-	}
+	}	
+	# 
+	# elseif(isset($_GET[newSearchCategory])){
+	#     execute queries and logic for newSearchCategory
+	# }
 	
 ?>

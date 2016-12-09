@@ -10,7 +10,7 @@ $(document).ready(function(){
         var iframe = document.createElement("iframe"); // Create an iFrame with autoplay set to true
         var startTime = $(this).parent().attr('start-time');
         var video_id = $(this).parent().attr('data-id');
-        iframe.setAttribute("src", "//www.youtube.com/embed/" + video_id + "?start=" + startTime + "&autoplay=1&autohide=2&border=0&wmode=opaque&enablejsapi=1&controls=1&showinfo=0&rel=0"); // Grab the video_id and startTime parameters from the response to the POST request
+        iframe.setAttribute("src", "//www.youtube.com/embed/" + video_id + "?start=" + startTime + "&autoplay=1&autohide=2&border=0&wmode=opaque&enablejsapi=1&controls=1&showinfo=0&rel=0"); // Grab the video_id and startTime parameters from the server's (getVideos.php) response to the POST request
         iframe.setAttribute("frameborder", "0");
         iframe.setAttribute("id", "youtube-iframe");
         this.parentNode.replaceChild(iframe, this); // Replace the YouTube thumbnail with YouTube HTML5 Player
@@ -20,11 +20,11 @@ $(document).ready(function(){
     function createOnDemandVideos(){
         var v = document.getElementsByClassName("youtube-player"); // Find all the youtube videos embedded on the page
         for (var n = 0; n < v.length; n++) { // For each video... 
-            var p = document.createElement("div"); // 1) Create a div
-            p.innerHTML = loadThumbnail(v[n].dataset.id); // 2) Call the function to load the video's thumbnail into the div
-            p.onclick = loadVideo; // 3) Call the function to load the video itself when this div is clicked
-            v[n].appendChild(p); // 4) Append the new div to the original youtube-player div
-            $(p).click(); // 5) Autoplay video (post request returns a single video now that character search is gone and quote search has autocomplete)
+            var p = document.createElement("div");
+            p.innerHTML = loadThumbnail(v[n].dataset.id); // Load the video's thumbnail into the div
+            p.onclick = loadVideo; // Load the video itself when this div is clicked
+            v[n].appendChild(p); // Append the new div to the original youtube-player div
+            $(p).click();
         }
     }
 
@@ -33,7 +33,7 @@ $(document).ready(function(){
         if(searchString != ""){ 
             $.post("core/getVideos.php", postData, function(searchResults){
                 if(searchResults != "nothing"){ 
-                    $("#searchResults").html(searchResults); // Embed the videos returned by the server on the page
+                    $("#searchResults").html(searchResults); 
                     createOnDemandVideos(); // Transform all embedded videos into on-demand videos
                 }else{
                     // Play the audio error message when the server finds zero search matches
@@ -46,12 +46,12 @@ $(document).ready(function(){
 
     // Set the post data dynamically, depending on the search category selected, send the post request to the server, and display the responsive, on-demand videos
     $("#SearchBtn").click(function(){
-        var postData          = { }; // Create associatve array
-        var searchString      = $("#searchInput").val(); // Grab the search string from the #searchInput field
-        var postVarName       = $("#searchInput").attr('class').split(' ')[1]; // The post variable name = the table column we want to query = the class of #searchInput
+        var postData          = { };
+        var searchString      = $("#searchInput").val();
+        var postVarName       = $("#searchInput").attr('class').split(' ')[1]; // The element's second class name = the current search category
         postData[postVarName] = searchString; // E.G. postData[character] = 'Tyrion Lannister'
-        var postData          = $.param(postData); // Parameterise the array
-        showVideos(searchString, postData); // Show the results: light and responsive video embeds
+        var postData          = $.param(postData); // E.G. postData = {character : Tyrion Lannister}
+        showVideos(searchString, postData);
     });
 
 });

@@ -26,5 +26,9 @@
 			}
 		}
 	}
+	# 
+	# elseif(isset($_POST[newSearchCategory])){
+	#     execute queries and logic for newSearchCategory
+	# }
 
 ?>

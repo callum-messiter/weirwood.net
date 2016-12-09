@@ -8,10 +8,10 @@
                 <div id="form" class="col-lg-6 col-lg-offset-3">
                     <div class="input-group">
                         <div class="input-group-btn">
-                            <!-- "Search by" dropdown button -->
+                            <!-- Search-category dropdown button -->
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search by <span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                                <li id="quoteSearchLi"><a href="#">quote</a></li>
+                                <li id="quote" class="searchCategoryLi"><a href="#">quote</a></li>
                                 <!-- Add search categories here -->
                             </ul>
                         </div>
