@@ -3,10 +3,10 @@
 	// Declare all variables 
 	$db = $searchString = $characterList = $getVideos = $runVideos = $row = $start_time = $video_id = "";
 
-	include "core/dbConnect.php";
+	include "core/init/dbConnect.php";
 
 	if(isset($_POST['quote'])){
-	    	$searchString     = mysqli_real_escape_string($db, $_POST['quote']);
+    	$searchString = mysqli_real_escape_string($db, $_POST['quote']);
 		$getVideos 	  = "SELECT * FROM transcript WHERE quote LIKE '%".$searchString."%' ";
 		$runVideos 	  = mysqli_query($db, $getVideos);
 		

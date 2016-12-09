@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     // The autocomplete function can be applied to different search categories. As a default, apply it to quote search 
     $(".quote").autocomplete({
-        source: "autocomplete.php",
+        source: "core/autocomplete.php",
         minLength: 2
     });
 
@@ -16,7 +16,7 @@ $(document).ready(function(){
     // Load autocomplete suggestions asynchronously. targetInput accounts for search category, e.g. .quote or .character
     function getAutocomplete(targetInput){
         $(targetInput).autocomplete({
-            source: "getVideos.php",
+            source: "core/getVideos.php",
             minLength: 2
         });
     }

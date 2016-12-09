@@ -16,7 +16,7 @@ $(document).ready(function(){
         this.parentNode.replaceChild(iframe, this); // Replace the YouTube thumbnail with YouTube HTML5 Player
     }
 
-    // Turn all embedded videos in on-demand videos; a responsive and lightwight video-embed method
+    // Turn all embedded videos into on-demand videos; a responsive and lightwight video-embed method
     function createOnDemandVideos(){
         var v = document.getElementsByClassName("youtube-player"); // Find all the youtube videos embedded on the page
         for (var n = 0; n < v.length; n++) { // For each video... 
@@ -31,7 +31,7 @@ $(document).ready(function(){
     // Send the post request to the server and display the response
     function showVideos(searchString, postData){
         if(searchString != ""){ 
-            $.post("getVideos.php", postData, function(searchResults){
+            $.post("core/getVideos.php", postData, function(searchResults){
                 if(searchResults != "nothing"){ 
                     $("#searchResults").html(searchResults); // Embed the videos returned by the server on the page
                     createOnDemandVideos(); // Transform all embedded videos into on-demand videos
