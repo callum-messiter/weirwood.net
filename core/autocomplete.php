@@ -3,7 +3,7 @@
 	// Declare all variables
 	$db = $searchString = $quoteList = $getVideos = $runVideos = "";
 
-	include "core/init/dbConnect.php";
+	include "init/dbConnect.php";
 
 	if(isset($_GET['term'])){
 		$searchString  = $_GET['term'];
