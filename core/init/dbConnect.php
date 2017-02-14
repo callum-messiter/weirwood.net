@@ -1,6 +1,6 @@
 <?php 
 
-// Database connection to be included in all PHP files //
+// Database connection to be included in all PHP files
 $hostname = "localhost";
 $user     = "root";
 $password = "";

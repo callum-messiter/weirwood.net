@@ -3,13 +3,18 @@ html {/* Fix vertical scrolllbar to prevent content repositioning */
 }
 
 body {/* background image */
-   background-repeat: no-repeat;
-   background-attachment: fixed;
-   -moz-background-size: cover;
-   -webkit-background-size: cover;
-   -o-background-size: cover;
-   background-size: cover; 
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; 
 } 
+
+#topRow {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
 
 .youtube-container {/* The container div class returned by the server in response to the AJAX request */
 	display: block;
