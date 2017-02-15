@@ -8,7 +8,7 @@
         <div class="input-group">
           <div class="input-group-btn">
             <!-- Search-category dropdown button -->
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search by <span class="caret"></span></button>
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search by <span class="caret"></span></button>
             <ul class="dropdown-menu">
               <li id="quote" class="searchCategoryLi"><a href="#">quote</a></li>
               <!-- Add search categories here -->
