@@ -1,11 +1,15 @@
 <?php 
 
-// Database connection to be included in all PHP files
 $hostname = "localhost";
-$user     = "root";
+$username = "root";
 $password = "";
-$dbName   = "thrones";
+$dbname   = "thrones";
 
-$db = mysqli_connect($hostname, $user, $password, $dbName); 
+try {
+	$db = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
+	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+	echo $e->getMessage();
+}
 
 ?>
