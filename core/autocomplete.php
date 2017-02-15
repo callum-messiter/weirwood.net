@@ -1,20 +1,20 @@
 <?php
 	
 	// Declare all variables
-	$db = $searchString = $quoteList = $getVideos = $runVideos = "";
+	$db = $searchString = $quoteList = $getVideos = $runVideos = '';
 
-	include "init/dbConnect.php";
+	include 'init/dbConnect.php';
 
 	if(isset($_GET['quote'])){
 		$searchString  = $_GET['quote'];
-		$searchString  = mysqli_real_escape_string($db, $searchString);
-		$quotesList    = array();
-		$getVideos     = "SELECT * FROM transcript WHERE quote LIKE '%".$searchString."%' ";
-		$runVideos     = mysqli_query($db, $getVideos);
+		$quotesList = array();
+		$stmt = $db->prepare("SELECT * FROM transcript WHERE quote LIKE concat('%', :searchString, '%')");
+		$stmt->bindParam(':searchString', $searchString);
+		$stmt->execute();
 
-		while($row = mysqli_fetch_array($runVideos)){
+		while($res = $stmt->fetch(PDO::FETCH_OBJ)){
 			// Add quotes returned by the query to the array
-			$quoteList[] = $row['quote'];
+			$quoteList[] = $res->quote;
 		}
 		// Return the array of quotes as a JSON object
 		echo json_encode($quoteList);	
