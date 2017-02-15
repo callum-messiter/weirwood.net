@@ -24,7 +24,7 @@ $(document).ready(function(){
             p.innerHTML = loadThumbnail(v[n].dataset.id); // Load the video's thumbnail into the div
             p.onclick = loadVideo; // Load the video itself when this div is clicked
             v[n].appendChild(p); // Append the new div to the original youtube-player div
-            $(p).click();
+            // Autoclick when there is only one video result: $(p).click();
         }
     }
 
